@@ -3,11 +3,11 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Pablo -- Web developer -- @portovep
 
 # THANKS
 
-    <name>
+    www.initializr.com
 
 # TECHNOLOGY COLOPHON
 
