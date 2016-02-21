@@ -1,0 +1,11 @@
+{
+  "name": "weighter",
+  "version": "1.0.0",
+  "description": "A minimalist app to track your weight progress",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "@portovep",
+  "license": "ISC"
+}
