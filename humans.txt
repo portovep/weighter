@@ -11,5 +11,11 @@
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3
-    Modernizr
+    Frontend
+    * HTML5, CSS3
+    * Modernizr
+    * Bootstrap 4
+
+
+    Platform
+    * GitHub Pages
