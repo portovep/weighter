@@ -15,6 +15,7 @@
     * HTML5, CSS3
     * Modernizr
     * Bootstrap 4
+    * Node.js + Express
 
 
     Platform
