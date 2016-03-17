@@ -16,7 +16,7 @@
     * Modernizr
     * Bootstrap 4
     * ReactJS + Babel
-    * Node.js + Express
+    * Node.js + Restify
 
 
     Platform

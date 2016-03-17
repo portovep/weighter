@@ -4,11 +4,11 @@
   "description": "A minimalist app to track your weight progress",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "node dev.js"
   },
   "author": "@portovep",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4"
+    "restify": "^4.0.4"
   }
 }
