@@ -15,9 +15,14 @@
     * HTML5, CSS3
     * Modernizr
     * Bootstrap 4
-    * ReactJS + Babel
-    * Node.js + Restify
+    * ReactJS
+    * Babel
+    * npm
+    * jQuery
 
+    Backend
+    * Node.js
+    * Restify
 
     Platform
     * GitHub Pages

@@ -48,6 +48,28 @@ var WeightEntryInput = React.createClass({
 });
 
 var WeightPanel = React.createClass({
+  loadWeightEntriesFromServer: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  getInitialState: function() {
+    return {data: []};
+  },
+
+  componentDidMount: function() {
+    this.loadWeightEntriesFromServer();
+  },
+
   render: function() {
     return (
       <div className="container-fluid">
@@ -58,7 +80,7 @@ var WeightPanel = React.createClass({
         </div>
         <div className="row row-margin-top">
           <div className="col-xs-12">
-           <WeightEntryList entries={this.props.entries} />
+           <WeightEntryList entries={this.state.data} />
           </div>
         </div>
       </div>
@@ -66,14 +88,7 @@ var WeightPanel = React.createClass({
   }
 });
 
-var WEIGHT_ENTRIES = [
-  {id: '1', weight: '81.1', date: '22/01/2016', unit: 'kg'},
-  {id: '2', weight: '82.7', date: '15/01/2016', unit: 'kg'},
-  {id: '3', weight: '82.5', date: '08/01/2016', unit: 'kg'},
-  {id: '4', weight: '84.1', date: '02/01/2016', unit: 'kg'}
-];
-
 ReactDOM.render(
-  <WeightPanel entries={WEIGHT_ENTRIES} />,
+  <WeightPanel url="api/user/1/weight" />,
   document.getElementById('weighter')
 );
