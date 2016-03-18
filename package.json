@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "A minimalist app to track your weight progress",
   "main": "index.js",
-  "scripts": {
-    "start": "node dev.js"
-  },
   "author": "@portovep",
   "license": "ISC",
   "dependencies": {
