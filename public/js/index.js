@@ -32,16 +32,55 @@ var WeightEntryList = React.createClass({
 });
 
 var WeightEntryInput = React.createClass({
+  generateRandomID: function() {
+    return Math.random() * (99999 - 99) + 99;
+  },
+
+  newWeightEntry: function (weight) {
+    var date = new Date().toDateString();
+    var id = this.generateRandomID();
+
+    var newWeightEntry = {id: id, weight: weight, date: date, unit: 'kg'};
+    return newWeightEntry;
+  },
+
+  getInitialState: function() {
+    return {weight: ''};
+  },
+
+  handleWeightChange: function(e) {
+    this.setState({weight: e.target.value});
+  },
+
+  handleSubmit: function(e) {
+    e.preventDefault();
+
+    var weight = this.state.weight.trim();
+    if (!weight) {
+      return;
+    }
+    this.setState({weight: ''});
+
+    this.props.onWeightSubmit(this.newWeightEntry(weight));
+  },
+
   render: function() {
     return (
-      <form className="form-inline">
+      <form className="form-inline" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <div className="input-group">
-            <input type="number" className="form-control" placeholder="Weight"/>
+            <input
+                type="number"
+                step="0.1"
+                className="form-control"
+                placeholder="Weight"
+                value={this.state.weight}
+                onChange={this.handleWeightChange}
+            />
             <div className="input-group-addon">Kg</div>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">Save</button>
+        <input className="btn btn-primary" type="submit" value="Save"/>
       </form>
     );
   }
@@ -62,6 +101,15 @@ var WeightPanel = React.createClass({
     });
   },
 
+  handleWeightSubmission: function(newWeightEntry) {
+    console.info("New weight entry: %o", newWeightEntry);
+
+    var data = this.state.data;
+    data.push(newWeightEntry);
+
+    this.setState({data: data});
+  },
+
   getInitialState: function() {
     return {data: []};
   },
@@ -75,7 +123,7 @@ var WeightPanel = React.createClass({
       <div className="container-fluid">
         <div className="row row-margin-top">
           <div className="col-xs-12">
-            <WeightEntryInput />
+            <WeightEntryInput onWeightSubmit={this.handleWeightSubmission} />
           </div>
         </div>
         <div className="row row-margin-top">
