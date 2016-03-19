@@ -25,4 +25,7 @@
     * Restify
 
     Platform
+    * Heroku
+
+    Previously
     * GitHub Pages
