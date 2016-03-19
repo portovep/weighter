@@ -1,15 +1,20 @@
 
 var WeightEntry = React.createClass({
+  formatDate: function (date) {
+    return new Date(date).toDateString();
+  },
+  
   render: function() {
 
     var weight = this.props.weightEntry.weight;
     var date = this.props.weightEntry.date;
     var unit = this.props.weightEntry.unit;
 
+    var formattedDate = this.formatDate(date);
     return (
       <li className="list-group-item">
           <h4 className="list-group-item-heading">{weight} {unit}</h4>
-          <p className="list-group-item-text">{date}</p>
+          <p className="list-group-item-text">{formattedDate}</p>
       </li>
     );
   }
@@ -37,7 +42,7 @@ var WeightEntryInput = React.createClass({
   },
 
   newWeightEntry: function (weight) {
-    var date = new Date().toDateString();
+    var date = new Date();
     var id = this.generateRandomID();
 
     var newWeightEntry = {id: id, weight: weight, date: date, unit: 'kg'};
@@ -102,7 +107,7 @@ var WeightPanel = React.createClass({
   },
 
   handleWeightSubmission: function(newWeightEntry) {
-    console.info("New weight entry: %o", newWeightEntry);
+    console.info("New weight entry: %s", JSON.stringify(newWeightEntry));
 
     var data = this.state.data;
     data.push(newWeightEntry);
