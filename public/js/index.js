@@ -98,6 +98,7 @@ var WeightPanel = React.createClass({
       dataType: 'json',
       cache: false,
       success: function(data) {
+        console.info("Server sent the following weight entries:\n\n %s", JSON.stringify(data));
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -107,7 +108,7 @@ var WeightPanel = React.createClass({
   },
 
   handleWeightSubmission: function(newWeightEntry) {
-    console.info("New weight entry: %s", JSON.stringify(newWeightEntry));
+    console.info("New weight entry:\n\n %s", JSON.stringify(newWeightEntry));
 
     var data = this.state.data;
     data.push(newWeightEntry);
