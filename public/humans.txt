@@ -24,6 +24,9 @@
     * Node.js
     * Restify
 
+    Continuous Delivery
+    * SnapCI
+
     Platform
     * Heroku
 
