@@ -5,10 +5,17 @@
   "main": "index.js",
   "author": "@portovep",
   "license": "ISC",
+  "scripts": {
+    "build": "babel --presets react src --out-dir public/build"
+  },
   "dependencies": {
     "restify": "^4.0.4"
   },
   "engines": {
     "node": ">= 5.8.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-preset-react": "^6.5.0"
   }
 }
