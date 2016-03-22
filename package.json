@@ -4,6 +4,7 @@
   "description": "A minimalist app to track your weight progress",
   "main": "index.js",
   "author": "@portovep",
+  "repository": "github:portovep/weighter",
   "license": "ISC",
   "scripts": {
     "build": "babel --presets react src --out-dir public/build"
