@@ -7,9 +7,14 @@
   "repository": "github:portovep/weighter",
   "license": "ISC",
   "scripts": {
-    "build": "babel --presets react src --out-dir public/build"
+    "build": "babel --presets react src --out-dir public/build",
+    "db:seed": "knex --knexfile db/knexfile.js seed:run",
+    "db:migrate": "knex --knexfile db/knexfile.js migrate:latest",
+    "db:setup": "npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
+    "knex": "^0.10.0",
+    "pg": "^4.5.1",
     "restify": "^4.0.4"
   },
   "engines": {

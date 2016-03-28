@@ -23,6 +23,8 @@
     Backend
     * Node.js
     * Restify
+    * Knex
+    * PostgreSQL
 
     Continuous Delivery
     * SnapCI

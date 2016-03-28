@@ -6,7 +6,7 @@ var WeightEntry = React.createClass({
   
   render: function() {
 
-    var weight = this.props.weightEntry.weight;
+    var weight = this.props.weightEntry.value;
     var date = this.props.weightEntry.date;
     var unit = this.props.weightEntry.unit;
 
@@ -43,9 +43,8 @@ var WeightEntryForm = React.createClass({
 
   newWeightEntry: function (weight) {
     var date = new Date();
-    var id = this.generateRandomID();
 
-    var newWeightEntry = {id: id, weight: weight, date: date, unit: 'kg'};
+    var newWeightEntry = {value: weight, date: date, unit: 'kg'};
     return newWeightEntry;
   },
 
