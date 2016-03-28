@@ -36,7 +36,7 @@ var WeightEntryList = React.createClass({
   }
 });
 
-var WeightEntryInput = React.createClass({
+var WeightEntryForm = React.createClass({
   generateRandomID: function() {
     return Math.random() * (99999 - 99) + 99;
   },
@@ -129,7 +129,7 @@ var WeightPanel = React.createClass({
       <div className="container-fluid">
         <div className="row row-margin-top">
           <div className="col-xs-12">
-            <WeightEntryInput onWeightSubmit={this.handleWeightSubmission} />
+            <WeightEntryForm onWeightSubmit={this.handleWeightSubmission} />
           </div>
         </div>
         <div className="row row-margin-top">
