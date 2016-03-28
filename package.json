@@ -7,7 +7,7 @@
   "repository": "github:portovep/weighter",
   "license": "ISC",
   "scripts": {
-    "start": "npm run build && node server.js",
+    "start": "npm run build && node -r dotenv/config server.js",
     "build": "babel --presets react src --out-dir public/build",
     "db:seed": "knex --knexfile db/knexfile.js seed:run",
     "db:migrate": "knex --knexfile db/knexfile.js migrate:latest",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
-    "babel-preset-react": "^6.5.0"
+    "babel-preset-react": "^6.5.0",
+    "dotenv": "^2.0.0"
   }
 }
