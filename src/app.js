@@ -106,14 +106,28 @@ var WeightPanel = React.createClass({
       }.bind(this)
     });
   },
+  
+  sendWeightEntryToServer: function(weightEntry) {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: weightEntry,
+      success: function(data) {
+        console.info("Server saved the following weight entry:\n\n %s", JSON.stringify(weightEntry));
+        console.info("Server sent the following weight entries:\n\n %s", JSON.stringify(data));
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
 
   handleWeightSubmission: function(newWeightEntry) {
     console.info("New weight entry:\n\n %s", JSON.stringify(newWeightEntry));
-
-    var data = this.state.data;
-    data.push(newWeightEntry);
-
-    this.setState({data: data});
+    
+    this.sendWeightEntryToServer(newWeightEntry);
   },
 
   getInitialState: function() {
