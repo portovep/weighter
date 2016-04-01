@@ -25,7 +25,6 @@
     * Restify
     * Knex
     * PostgreSQL
-    * dotenv
 
     Continuous Delivery
     * SnapCI
