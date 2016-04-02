@@ -1,4 +1,6 @@
 # Weighter
+[![Build Status](https://snap-ci.com/portovep/weighter/branch/master/build_image)](https://snap-ci.com/portovep/weighter/branch/master)
+
 A simple app to track your weight
 
 ## Getting started
