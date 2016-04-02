@@ -11,7 +11,7 @@ git remote add target-remote https://git.heroku.com/weighter-${ENVIRONMENT}.git
 heroku config:set NPM_CONFIG_PRODUCTION=false --remote target-remote
 
 # deploy app
-git push target-remote master
+git push -f target-remote master
 
 # migrate db
 heroku run npm run db:setup
