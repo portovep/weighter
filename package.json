@@ -8,7 +8,7 @@
   "license": "ISC",
   "scripts": {
     "start": "npm run build && node server.js",
-    "build": "babel --presets react src --out-dir public/build",
+    "build": "browserify src/main.js -o public/build/app.js -t [ babelify --presets [ react ] ]",
     "postinstall": "npm run build",
     "db:setup": "npm run db:migrate && npm run db:seed",
     "db:seed": "knex --knexfile db/knexfile.js seed:run",
@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
-    "babel-preset-react": "^6.5.0"
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0"
   }
 }

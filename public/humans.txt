@@ -19,6 +19,8 @@
     * Babel
     * npm
     * jQuery
+    * Facebook Login
+    * Browserify
 
     Backend
     * Node.js
