@@ -27,17 +27,14 @@ var FacebookLogin = React.createClass({
 
   statusChangeCallback: function(response) {
     if (response.status === 'connected') {
-      this.setState({loggedIn: true});
       console.info('Logged into the app');
 
       this.welcomeUser();
     }
     else if (response.status === 'not_authorized') {
-      this.setState({loggedIn: false});
       console.info('Logged into Facebook, but not the app.');
     }
     else {
-      this.setState({loggedIn: false});
       console.info('Not logged into Facebook');
     }
   },
@@ -50,7 +47,8 @@ var FacebookLogin = React.createClass({
     FB.api('/me', function(response) {
       var username = response.name;
       console.info('Successful login for: ' + username);
-      self.setState({username: username});
+
+      self.props.onLogin(username);
     });
   },
 
@@ -70,8 +68,8 @@ var FacebookLogin = React.createClass({
   render: function() {
     var content;
 
-    if (this.state.loggedIn) {
-      content = 'Welcome ' +  this.state.username + '!';
+    if (this.props.loggedIn) {
+      content = 'Welcome ' +  this.props.username + '!';
     }
     else {
       content = <button type="button" className="btn btn-success" onClick={this.loginFB}>Login in with Facebook</button>;

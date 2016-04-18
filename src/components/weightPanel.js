@@ -37,6 +37,10 @@ var WeightPanel = React.createClass({
     });
   },
 
+  handleLogin: function(username) {
+    this.setState({loggedIn: true, username: username});
+  },
+
   handleWeightSubmission: function(newWeightEntry) {
     console.info("New weight entry:\n\n %s", JSON.stringify(newWeightEntry));
 
@@ -44,7 +48,7 @@ var WeightPanel = React.createClass({
   },
 
   getInitialState: function() {
-    return {data: []};
+    return {data: [], loggedIn: false, username: ''};
   },
 
   componentDidMount: function() {
@@ -56,7 +60,9 @@ var WeightPanel = React.createClass({
       <div className="container-fluid">
         <div className="row row-margin-top">
           <div className="col-xs-12">
-            <FacebookLogin />
+            <FacebookLogin onLogin={this.handleLogin}
+                           username={this.state.username}
+                           loggedIn={this.state.loggedIn}/>
           </div>
         </div>
         <div className="row row-margin-top">
