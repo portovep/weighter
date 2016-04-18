@@ -57,9 +57,25 @@ var WeightPanel = React.createClass({
 
   render: function() {
     var header;
+    var content;
 
     if (this.state.loggedIn) {
       header = 'Welcome ' +  this.state.username + '!';
+
+      content = (
+        <div>
+          <div className="row row-margin-top">
+            <div className="col-xs-12">
+              <WeightEntryForm onWeightSubmit={this.handleWeightSubmission} />
+            </div>
+          </div>
+          <div className="row row-margin-top">
+            <div className="col-xs-12">
+             <WeightEntryList entries={this.state.data} />
+            </div>
+          </div>
+        </div>
+      );
     }
     else {
       header = <FacebookLogin onLogin={this.handleLogin}/>;
@@ -72,16 +88,7 @@ var WeightPanel = React.createClass({
             {header}
           </div>
         </div>
-        <div className="row row-margin-top">
-          <div className="col-xs-12">
-            <WeightEntryForm onWeightSubmit={this.handleWeightSubmission} />
-          </div>
-        </div>
-        <div className="row row-margin-top">
-          <div className="col-xs-12">
-           <WeightEntryList entries={this.state.data} />
-          </div>
-        </div>
+        { content }
       </div>
     );
   }
