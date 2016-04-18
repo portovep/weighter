@@ -29,7 +29,7 @@ var FacebookLogin = React.createClass({
     if (response.status === 'connected') {
       console.info('Logged into the app');
 
-      this.welcomeUser();
+      this.getUserInformation();
     }
     else if (response.status === 'not_authorized') {
       console.info('Logged into Facebook, but not the app.');
@@ -39,7 +39,7 @@ var FacebookLogin = React.createClass({
     }
   },
 
-  welcomeUser: function() {
+  getUserInformation: function() {
     console.info('Fetching user information.... ');
 
     var self = this;
@@ -57,27 +57,14 @@ var FacebookLogin = React.createClass({
     FB.login(this.statusChangeCallback, {scope: 'public_profile,email'});
   },
 
-  getInitialState: function() {
-    return {loggedIn: false, username: ''};
-  },
-
   componentDidMount: function () {
     this.initFacebookSDK();
   },
 
   render: function() {
-    var content;
-
-    if (this.props.loggedIn) {
-      content = 'Welcome ' +  this.props.username + '!';
-    }
-    else {
-      content = <button type="button" className="btn btn-success" onClick={this.loginFB}>Login in with Facebook</button>;
-    }
-
     return (
       <div>
-        { content }
+        <button type="button" className="btn btn-success" onClick={this.loginFB}>Login in with Facebook</button>
       </div>
     );
   }

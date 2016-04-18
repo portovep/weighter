@@ -56,13 +56,20 @@ var WeightPanel = React.createClass({
   },
 
   render: function() {
+    var header;
+
+    if (this.state.loggedIn) {
+      header = 'Welcome ' +  this.state.username + '!';
+    }
+    else {
+      header = <FacebookLogin onLogin={this.handleLogin}/>;
+    }
+
     return (
       <div className="container-fluid">
         <div className="row row-margin-top">
           <div className="col-xs-12">
-            <FacebookLogin onLogin={this.handleLogin}
-                           username={this.state.username}
-                           loggedIn={this.state.loggedIn}/>
+            {header}
           </div>
         </div>
         <div className="row row-margin-top">
